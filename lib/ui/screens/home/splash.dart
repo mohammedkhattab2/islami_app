@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:islami_app/ui/screens/home.dart';
+import 'package:islami_app/ui/screens/home/home.dart';
 import 'package:islami_app/ui/utilits/app_assets.dart';
 
 class Splash extends StatelessWidget {
