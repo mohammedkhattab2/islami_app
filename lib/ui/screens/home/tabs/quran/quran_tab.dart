@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/model/sura_model.dart';
+import 'package:islami_app/ui/screens/home/tabs/quran/sura_row.dart';
 import 'package:islami_app/ui/utilits/app_assets.dart';
 import 'package:islami_app/ui/utilits/app_colors.dart';
+import 'package:islami_app/ui/utilits/app_conestance.dart';
 import 'package:islami_app/ui/utilits/app_text%20_styles.dart';
 
 class QuranTab extends StatelessWidget {
@@ -50,9 +53,12 @@ class QuranTab extends StatelessWidget {
   }
 
   Widget buildSuralistview() {
-    return ListView.builder(itemCount: 30, itemBuilder: (context, index){
-
-    }
+    return ListView.separated(
+      itemCount: AppConestance.suras.length,
+      itemBuilder: (context, index) {
+        return SuraRow(sura: AppConestance.suras[index]);
+      },
+      separatorBuilder: (_, _) => Divider(endIndent: 64, indent: 64),
     );
   }
 }

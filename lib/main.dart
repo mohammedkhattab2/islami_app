@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:islami_app/ui/screens/home/home.dart';
 import 'package:islami_app/ui/screens/home/splash.dart';
 import 'package:islami_app/ui/utilits/app_colors.dart';
+import 'package:islami_app/ui/utilits/app_conestance.dart';
 
 void main() {
+  AppConestance.fillsuras();
   runApp(const MyApp());
 }
 
