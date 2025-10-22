@@ -4,15 +4,28 @@ import 'package:flutter/material.dart';
 import 'package:islami_app/ui/screens/home/home.dart';
 import 'package:islami_app/ui/utilits/app_assets.dart';
 
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
   static const routname = 'splash';
   const Splash({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<Splash> createState() => _SplashState();
+  
+}
+
+class _SplashState extends State<Splash> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
     Timer(Duration(seconds: 2), () {
       Navigator.pushReplacementNamed(context, Home.routname);
     });
+
+  }
+  @override
+  Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: Colors.amber,
       body: Image.asset(
