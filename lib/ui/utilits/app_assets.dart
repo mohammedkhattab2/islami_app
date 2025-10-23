@@ -12,8 +12,7 @@ abstract final class AppAssets {
       "assets/images/recent_surahs_background.png";
   static const String splash = "assets/images/splash.png";
   static const String suraNumberBg = "assets/images/sura_number_bg.png";
-  static const String suraRightCorner ="assets/images/sura_right corner.png";
-  static const String suraLeftCorner ="assets/images/sura_left_corner.png";
-  
-  
+  static const String suraRightCorner = "assets/images/sura_right corner.png";
+  static const String suraLeftCorner = "assets/images/sura_left_corner.png";
+  static const String mosqueImage = "assets/images/mosque_image.png";
 }
