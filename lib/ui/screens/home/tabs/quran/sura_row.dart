@@ -30,15 +30,13 @@ class SuraRow extends StatelessWidget {
     ),
   );
 
-  Widget buildEnInfo() => Container(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(sura.nameen, style: AppTextStyles.whiteBold20),
-        SizedBox(height: 4),
-        Text("${sura.verses} Verses", style: AppTextStyles.whiteBold14),
-      ],
-    ),
+  Widget buildEnInfo() => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(sura.nameen, style: AppTextStyles.whiteBold20),
+      SizedBox(height: 4),
+      Text("${sura.verses} Verses", style: AppTextStyles.whiteBold14),
+    ],
   );
 
   Widget buildNameAr() => Text(sura.namear, style: AppTextStyles.whiteBold20);
