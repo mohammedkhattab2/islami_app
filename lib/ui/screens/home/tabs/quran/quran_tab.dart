@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/sura_datails/sura_details.dart';
+import 'package:islami_app/model/sura_model.dart';
+import 'package:islami_app/ui/sura_datails/sura_details.dart';
 import 'package:islami_app/ui/screens/home/tabs/quran/sura_row.dart';
 import 'package:islami_app/ui/utilits/app_assets.dart';
 import 'package:islami_app/ui/utilits/app_colors.dart';
 import 'package:islami_app/ui/utilits/app_conestance.dart';
 import 'package:islami_app/ui/utilits/app_text%20_styles.dart';
 
-class QuranTab extends StatelessWidget {
+class QuranTab extends StatefulWidget {
   const QuranTab({super.key});
 
+  @override
+  State<QuranTab> createState() => _QuranTabState();
+}
+
+class _QuranTabState extends State<QuranTab> {
+  List<SuraDM> filterdSurasList = AppConestance.suras;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,6 +54,9 @@ class QuranTab extends StatelessWidget {
           color: AppColors.gold,
         ),
       ),
+      onChanged: (query) {
+        search(query);
+      },
       style: AppTextStyles.whiteBold12,
       cursorColor: AppColors.gold,
     );
@@ -54,17 +64,27 @@ class QuranTab extends StatelessWidget {
 
   Widget buildSuralistview() {
     return ListView.separated(
-      itemCount: AppConestance.suras.length,
+      itemCount: filterdSurasList.length,
       itemBuilder: (context, index) {
-        var sura = AppConestance.suras[index];
+        var sura = filterdSurasList[index];
         return InkWell(
           onTap: () {
             Navigator.pushNamed(context, SuraDetails.routName, arguments: sura);
           },
-          child: SuraRow(sura: AppConestance.suras[index]),
+          child: SuraRow(sura: sura),
         );
       },
       separatorBuilder: (_, _) => Divider(endIndent: 64, indent: 64),
     );
+  }
+
+  void search(String query) {
+    filterdSurasList = AppConestance.suras.where((sura) {
+      return sura.namear.contains(query) ||
+          sura.nameen.toLowerCase().contains(query.toLowerCase());
+    }).toList();
+    setState(() {
+      
+    });
   }
 }

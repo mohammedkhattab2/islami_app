@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami_app/ui/screens/hadith_details/hadith_details.dart';
 import 'package:islami_app/ui/utilits/app_assets.dart';
 import 'package:islami_app/ui/utilits/app_text%20_styles.dart';
 
@@ -63,49 +64,7 @@ class _AhadethTabState extends State<AhadethTab> {
                         BuildContext context,
                         int itemIndex,
                         int pageViewIndex,
-                      ) => Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(AppAssets.hadethBackground),
-                          ),
-                        ),
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.only(
-                                top: 42.66,
-                                right: 80.09,
-                                left: 83.09,
-                              ),
-                              child: Text(
-                                ahadeth[itemIndex].titile,
-                                style: AppTextStyles.blackBold24,
-                                textAlign: TextAlign.center,
-                                textDirection: TextDirection.rtl,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Expanded(
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                  left: 22.62,
-                                  right: 24.43,
-                                  top: 101,
-                                  bottom: 24.79,
-                                ),
-
-                                child: Text(
-                                  ahadeth[itemIndex].content,
-                                  style: AppTextStyles.blackBold16,
-                                  textAlign: TextAlign.center,
-                                  textDirection: TextDirection.rtl,
-                                  overflow: TextOverflow.fade,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      ) => buildhadethWedget(itemIndex)
                 ),
               ),
             SizedBox(height: 20),
@@ -127,5 +86,53 @@ class _AhadethTabState extends State<AhadethTab> {
       ahadeth.add(Hadeth(title, hadethlines.join()));
       setState(() {});
     }
+  }
+  Widget buildhadethWedget (int itemIndex){
+    return InkWell(
+      onTap: () => Navigator.pushNamed(context, HadithDetails.routName , arguments: ahadeth[itemIndex]),
+      child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(AppAssets.hadethBackground),
+                            ),
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(
+                                  top: 42.66,
+                                  right: 80.09,
+                                  left: 83.09,
+                                ),
+                                child: Text(
+                                  ahadeth[itemIndex].titile,
+                                  style: AppTextStyles.blackBold24,
+                                  textAlign: TextAlign.center,
+                                  textDirection: TextDirection.rtl,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                    left: 22.62,
+                                    right: 24.43,
+                                    top: 101,
+                                    bottom: 24.79,
+                                  ),
+      
+                                  child: Text(
+                                    ahadeth[itemIndex].content,
+                                    style: AppTextStyles.blackBold16,
+                                    textAlign: TextAlign.center,
+                                    textDirection: TextDirection.rtl,
+                                    overflow: TextOverflow.fade,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+    );
   }
 }
