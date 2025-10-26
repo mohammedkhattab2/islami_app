@@ -82,9 +82,12 @@ class _QuranTabState extends State<QuranTab> {
       itemBuilder: (context, index) {
         var sura = filterdSurasList[index];
         return InkWell(
-          onTap: () {
+          onTap:  () async {
             MostRecentSurasPref.addsuratopref(sura);
-            Navigator.pushNamed(context, SuraDetails.routName, arguments: sura);
+            await Navigator.pushNamed(context, SuraDetails.routName, arguments: sura);
+            setState(() {
+              
+            });
           },
           child: SuraRow(sura: sura),
         );
@@ -117,7 +120,9 @@ class _QuranTabState extends State<QuranTab> {
 
           child: Row(
             children: [
+              SizedBox(width: 8,),
               Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(sura.nameen, style: AppTextStyles.blackBold24),
                   Text(sura.namear, style: AppTextStyles.blackBold24),
@@ -127,6 +132,8 @@ class _QuranTabState extends State<QuranTab> {
                   ),
                 ],
               ),
+              Expanded(
+                child: Image.asset(AppAssets.recentQuranImage))
             ],
           ),
         );
