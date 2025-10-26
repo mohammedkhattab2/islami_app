@@ -6,6 +6,7 @@ import 'package:islami_app/ui/utilits/app_assets.dart';
 import 'package:islami_app/ui/utilits/app_colors.dart';
 import 'package:islami_app/ui/utilits/app_conestance.dart';
 import 'package:islami_app/ui/utilits/app_text%20_styles.dart';
+import 'package:islami_app/ui/utilits/most_recent_suras_prefrences.dart';
 
 class QuranTab extends StatefulWidget {
   const QuranTab({super.key});
@@ -16,6 +17,15 @@ class QuranTab extends StatefulWidget {
 
 class _QuranTabState extends State<QuranTab> {
   List<SuraDM> filterdSurasList = AppConestance.suras;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    MostRecentSurasPref.loadsuraList().then((_) {
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +41,11 @@ class _QuranTabState extends State<QuranTab> {
           SizedBox(height: 30),
           Image.asset(AppAssets.islamiLogo),
           buildSearchTextFild(),
-          Expanded(child: buildSuralistview()),
+          SizedBox(height: 20),
+          Text("Most Recent ", style: AppTextStyles.whiteBold16),
+          if (MostRecentSurasPref.surasList.isNotEmpty)
+            Expanded(flex: 3, child: buildMostRecentList()),
+          Expanded(flex: 7, child: buildSuralistview()),
         ],
       ),
     );
@@ -69,6 +83,7 @@ class _QuranTabState extends State<QuranTab> {
         var sura = filterdSurasList[index];
         return InkWell(
           onTap: () {
+            MostRecentSurasPref.addsuratopref(sura);
             Navigator.pushNamed(context, SuraDetails.routName, arguments: sura);
           },
           child: SuraRow(sura: sura),
@@ -83,8 +98,39 @@ class _QuranTabState extends State<QuranTab> {
       return sura.namear.contains(query) ||
           sura.nameen.toLowerCase().contains(query.toLowerCase());
     }).toList();
-    setState(() {
-      
-    });
+    setState(() {});
+  }
+
+  Widget buildMostRecentList() {
+    return ListView.builder(
+      itemCount: MostRecentSurasPref.surasList.length,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index) {
+        var sura = MostRecentSurasPref.surasList[index];
+        return Container(
+          width: MediaQuery.of(context).size.width * .7,
+          margin: EdgeInsets.symmetric(horizontal: 18),
+          decoration: BoxDecoration(
+            color: AppColors.gold,
+            borderRadius: BorderRadius.circular(20),
+          ),
+
+          child: Row(
+            children: [
+              Column(
+                children: [
+                  Text(sura.nameen, style: AppTextStyles.blackBold24),
+                  Text(sura.namear, style: AppTextStyles.blackBold24),
+                  Text(
+                    "${sura.verses} verses",
+                    style: AppTextStyles.blackBold14,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
