@@ -11,13 +11,21 @@ abstract final class MostRecentSurasPref {
     List<String> curentSurasList = pref.getStringList(suraKey) ?? [];
     surasList = curentSurasList
         .map((String) => AppConestance.suras[int.parse(String) - 1])
+        .toList()
+        .reversed
         .toList();
   }
 
   static Future addsuratopref(SuraDM sura) async {
     final SharedPreferences Pref = await SharedPreferences.getInstance();
     List<String> oldSuras = Pref.getStringList(suraKey) ?? [];
-    oldSuras.add(sura.index.toString());
+    if (oldSuras.contains(sura.index.toString())) {
+      oldSuras.remove(sura.index.toString());
+      oldSuras.add(sura.index.toString());
+    } else {
+      oldSuras.add(sura.index.toString());
+    }
+
     Pref.setStringList(suraKey, oldSuras);
     await loadsuraList();
   }

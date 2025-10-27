@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/model/sura_model.dart';
 import 'package:islami_app/ui/screens/home/tabs/ahadeth/ahadeth_tab.dart';
 import 'package:islami_app/ui/utilits/app_assets.dart';
 import 'package:islami_app/ui/utilits/app_colors.dart';
