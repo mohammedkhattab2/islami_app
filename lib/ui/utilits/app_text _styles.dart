@@ -50,4 +50,9 @@ abstract final class AppTextStyles {
     fontSize: 24,
     fontWeight: FontWeight.bold,
   );
+  static const wihteBold36 = TextStyle(
+    color: Colors.white,
+    fontSize: 36,
+    fontWeight: FontWeight.bold,
+  );
 }

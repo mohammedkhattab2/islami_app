@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:islami_app/model/sura_model.dart';
 import 'package:islami_app/ui/screens/home/tabs/ahadeth/ahadeth_tab.dart';
 import 'package:islami_app/ui/utilits/app_assets.dart';
 import 'package:islami_app/ui/utilits/app_colors.dart';
@@ -28,7 +26,6 @@ class _SuraDetailsState extends State<HadithDetails> {
           onTap: () => Navigator.pop(context),
           child: Icon(Icons.arrow_back, color: AppColors.gold),
         ),
-        
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -52,19 +49,19 @@ class _SuraDetailsState extends State<HadithDetails> {
               ),
             ],
           ),
-               Expanded(
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.16),
-                      child: Text(
-                        hadeth.content,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.goldBold24,
-                        textDirection: TextDirection.rtl,
-                      ),
-                    ),
-                  ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.16),
+                child: Text(
+                  hadeth.content,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.goldBold24,
+                  textDirection: TextDirection.rtl,
                 ),
+              ),
+            ),
+          ),
           Image.asset(AppAssets.mosqueImage),
         ],
       ),
