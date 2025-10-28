@@ -65,4 +65,9 @@ abstract final class AppTextStyles {
     fontSize: 24,
     fontWeight: FontWeight.bold,
   );
+  static const primary16 = TextStyle(
+    color: Color(0xffE2BE7F),
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+  );
 }

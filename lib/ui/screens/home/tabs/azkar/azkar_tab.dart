@@ -5,8 +5,6 @@ class AzkarTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.deepOrange,
-    );
+    return Scaffold(backgroundColor: Colors.black);
   }
 }
