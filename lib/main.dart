@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/on_bording/on_bording.dart';
 import 'package:islami_app/ui/screens/hadith_details/hadith_details.dart';
 import 'package:islami_app/ui/sura_datails/sura_details.dart';
 import 'package:islami_app/ui/screens/home/home.dart';
@@ -19,12 +20,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(canvasColor: AppColors.gold),
-      initialRoute: Splash.routname,
+      initialRoute: OnBordingPadge.routeName,
       routes: {
         Splash.routname: (_) => const Splash(),
         Home.routname: (_) => const Home(),
         SuraDetails.routName : (_) => const SuraDetails(),
-        HadithDetails.routName:(_)=> const HadithDetails()
+        HadithDetails.routName:(_)=> const HadithDetails(),
+        OnBordingPadge.routeName: (_) =>  OnBordingPadge(),
       },
     );
   }

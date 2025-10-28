@@ -20,4 +20,9 @@ abstract final class AppAssets {
   static const String sebhaBody = "assets/images/sebha_body.png";
   static const String sebhaHead = "assets/images/sebha_head.png";
   static const String recentQuranImage = "assets/images/recent_quran_image.png";
+  static const String introscreen1 = "assets/images/introscreen1.png";
+  static const String introscreen2 = "assets/images/introscreen2.png";
+  static const String introscreen3 = "assets/images/introscreen3.png";
+  static const String introscreen4 = "assets/images/introscreen4.png";
+  static const String introscreen5 = "assets/images/introscreen5.png";
 }
