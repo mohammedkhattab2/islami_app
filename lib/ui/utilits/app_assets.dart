@@ -25,4 +25,6 @@ abstract final class AppAssets {
   static const String introscreen3 = "assets/images/introscreen3.png";
   static const String introscreen4 = "assets/images/introscreen4.png";
   static const String introscreen5 = "assets/images/introscreen5.png";
+  static const String radioBackground = "assets/images/radio_background.png";
+  static const String radioTabBackground = "assets/images/radio_tab_background.png";
 }
